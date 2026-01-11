@@ -8,18 +8,20 @@ def brew_chai():
         count+=1
     print("Chai finished brewing...")
 
-p1=Process(target=brew_chai)
-p2=Process(target=brew_chai)
 
-start=time.time()
+if __name__ == "__main__":
+    p1=Process(target=brew_chai)
+    p2=Process(target=brew_chai)
 
-p1.start()
-p2.start()
+    start=time.time()
 
-p1.join()
-p2.join()
+    p1.start()
+    p2.start()
 
-end=time.time()
+    p1.join()
+    p2.join()
 
-print(f"Finished brewing in {end-start:.2f} seconds.")
+    end=time.time()
+
+    print(f"Finished brewing in {end-start:.2f} seconds.")
 
