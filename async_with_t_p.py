@@ -9,7 +9,7 @@ def fetch_data(t):
     return f"Result of {t}"
 
 async def main():
-    #Run in separate threads
+    #Run in threads
     t1=asyncio.create_task(asyncio.to_thread(fetch_data,1))
     t2=asyncio.create_task(asyncio.to_thread(fetch_data,2))
     result1=await t1
@@ -18,7 +18,7 @@ async def main():
     print(f"Finished thread 2")
 
 
-    #Run in separate Process
+    #Run in Process
     loop=asyncio.get_running_loop()
     with ProcessPoolExecutor() as executor:
         t1=loop.run_in_executor(executor,fetch_data,1)
