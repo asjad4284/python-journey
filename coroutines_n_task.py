@@ -23,10 +23,18 @@ async def main():
     results=await asyncio.gather(*tasks)
     print(f"Task Results: {results}")
 
+    # Task Group
+    async with asyncio.TaskGroup() as tg:
+        results=[tg.create_task(f_data(i)) for i in range(1,3)]
+        # All tasks are awaited when context manager exits.
+    print(f"Task Group Results: {[result.result() for result in results]}")
+    return "Main Coroutine Done!"
+
+
 
 
 start=time.time()
-result=asyncio.run(main())
+results=asyncio.run(main())
 end=time.time()
+print(results)
 print(f"{end-start:.2f} seconds")
-# print(result)
