@@ -18,6 +18,11 @@ async def main():
     results=await asyncio.gather(*coroutines,return_exceptions=True)
     print(f"Coroutine Results: {results}")
 
+    # Gather Task
+    tasks=[asyncio.create_task(f_data(i)) for i in range(1,3)]
+    results=await asyncio.gather(*tasks)
+    print(f"Task Results: {results}")
+
 
 
 start=time.time()
