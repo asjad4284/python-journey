@@ -1,12 +1,8 @@
-def changefunc(func):
-    def inner():
-        return func().upper()
-    return inner
+def my_generators():
+    yield 1
+    yield 2
+    yield 3
 
 
-@changefunc
-def newfunc():
-    return "Hello"
-
-print(newfunc())
-
+for value in my_generators():
+    print(value)
