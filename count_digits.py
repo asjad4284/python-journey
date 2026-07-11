@@ -1,10 +1,19 @@
-num=321567
-n=num
-result=0
+from math import *
 
-while n>0:
-    r=n%10
-    result=(result*10)+r
-    n=n//10
+num=123001
 
-print(result)
+n=0;
+while num>0:
+    digit=num%10;
+    num=num//10
+    n=n+1;
+
+print(n)
+
+#Logarithmic Approach
+
+def count_digits(number):
+    return int(log10(number)+1)
+
+print(count_digits(1234))
+
