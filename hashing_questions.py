@@ -5,13 +5,11 @@ f_map=dict()
 length=len(n)
 
 for i in range(0,length):
-    if n[i] in f_map:
-        f_map[n[i]]+=1
-    else:
-        f_map[n[i]]=1
+    f_map[n[i]]=f_map.get(n[i],0)+1
 
 for num in m:
     if num in f_map:
         print(num,f_map[num])
     else:
         print(num,0)
+
