@@ -1,13 +1,12 @@
-arr=[5,7,3,2,6,1,5,9]
-
-def reverse_specific_part(arr,left,right):
-    if left>right:
-        return
-    temp=arr[left]
-    arr[left]=arr[right]
-    arr[right]=temp
-    reverse_specific_part(arr,left+1,right-1)
+s="eye"
+n=len(s)
 
 
-reverse_specific_part(arr,0,7)
-print(arr)
+def func(s,left,right):
+    if left>=right:
+        return True
+    if s[left]!=s[right]:
+        return False
+    return func(s,left+1,right-1)
+
+print(func(s,0,n-1))
