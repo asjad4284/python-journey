@@ -8,6 +8,7 @@ def selection_sort(nums):
         nums[i],nums[min_index]=nums[min_index],nums[i]
 
 
-lst=[5,4,1,7,8,2,3]
+lst=[5,4,6,8,1,3,2]
+
 selection_sort(lst)
 print(lst)
