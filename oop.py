@@ -1,20 +1,38 @@
-class Employees():
-    def __init__(self,name,last):
-        self.name=name
-        self.last=last
+from abc import ABC, abstractmethod
 
-class Supervisors(Employees):
-    def __init__(self, name, last,password):
-        super().__init__(name, last)
-        self.password=password
+class Bank(ABC):
 
-class Chefs(Employees):
-    def request_leave(self,days):
-        return self.name + " wants leave for "+ str(days) + " days."
+    def basicinfo():
+        print("This is a generic bank")
+        return "Generic bank: 0"
+    @abstractmethod
+    def withdraw():
+        pass
 
-adrian=Supervisors("Adrian","A","abc")
+class Swiss(Bank):
+    def __init__(self):
+        self.bal=1000
+    
+    def basicinfo(self):
+        print("This is the Swiss bank")
+        return "Swiss Bank: " + str(self.bal)
+    
+    def withdraw(self,amount):
+        if self.bal > amount:
+            self.bal=self.bal-amount
+            print("Withdrawn amount: ",amount)
+            print("New Balance: ",self.bal)
+            return self.bal
+        else:
+            print("Insufficient funds")
+            return self.bal
 
-corey=Chefs("Corey","C")
-print(adrian.password)
-print(corey.last)
-print(corey.request_leave(5))
+def main():
+    assert issubclass(Bank, ABC)
+    s = Swiss()
+    print(s.basicinfo())
+    s.withdraw(30)
+    s.withdraw(1000)
+
+if __name__ == "__main__":
+    main()
