@@ -1,25 +1,20 @@
-class Payslip:
-    def __init__(self,name,payment,amount):
+class Employees():
+    def __init__(self,name,last):
         self.name=name
-        self.payment=payment
-        self.amount=amount
+        self.last=last
 
-    def pay(self):
-        self.payment="yes"
+class Supervisors(Employees):
+    def __init__(self, name, last,password):
+        super().__init__(name, last)
+        self.password=password
 
-    def status(self):
-        if self.payment=="yes":
-            return self.name + " is paid: " + str(self.amount)
-        else:
-            return self.name +" is not paid yet"
+class Chefs(Employees):
+    def request_leave(self,days):
+        return self.name + " wants leave for "+ str(days) + " days."
 
-john=Payslip("John","no",1000)
-corey=Payslip("Corey","no",3000)
+adrian=Supervisors("Adrian","A","abc")
 
-print(john.status())
-print(corey.status())
-
-corey.pay()
-
-print("After payemnt")
-print(corey.status())
+corey=Chefs("Corey","C")
+print(adrian.password)
+print(corey.last)
+print(corey.request_leave(5))
