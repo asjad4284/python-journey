@@ -2,11 +2,11 @@ from abc import ABC, abstractmethod
 
 class Bank(ABC):
 
-    def basicinfo():
+    def basicinfo(self):
         print("This is a generic bank")
         return "Generic bank: 0"
     @abstractmethod
-    def withdraw():
+    def withdraw(self,amount):
         pass
 
 class Swiss(Bank):
@@ -20,8 +20,8 @@ class Swiss(Bank):
     def withdraw(self,amount):
         if self.bal > amount:
             self.bal=self.bal-amount
-            print("Withdrawn amount: ",amount)
-            print("New Balance: ",self.bal)
+            print("Withdrawn amount:",amount)
+            print("New Balance:",self.bal)
             return self.bal
         else:
             print("Insufficient funds")
